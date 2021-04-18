@@ -91,20 +91,38 @@ int main(void)
 	}
 
 	// 가위 0 바위 1 보 2
-	srand(time(NULL));
+	//srand(time(NULL));
 
-	int i = rand() % 3; // 0 ~ 2 반환
-	if (i == 0)
+	//int i = rand() % 3; // 0 ~ 2 반환
+	//if (i == 0)
+	//{
+	//	printf("가위\n");
+	//}
+	//else if (i == 1)
+	//{
+	//	printf("바위\n");
+	//}
+	//else if (i == 2)
+	//{
+	//	printf("보\n");
+	//}
+
+	srand(time(NULL));
+	int j = rand() % 3;
+	switch (j)
 	{
+	case 0:
 		printf("가위\n");
-	}
-	else if (i == 1)
-	{
+		break;
+	case 1:
 		printf("바위\n");
-	}
-	else if (i == 2)
-	{
+		break;
+	case 2:
 		printf("보\n");
+		break;
+	default:
+		printf("몰라요\n");
+		break;
 	}
 	return 0;
 }
