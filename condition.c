@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 
 int main(void)
 {
@@ -87,6 +88,23 @@ int main(void)
 	else
 	{
 		printf("값이 서로 다르네요\n");
+	}
+
+	// 가위 0 바위 1 보 2
+	srand(time(NULL));
+
+	int i = rand() % 3; // 0 ~ 2 반환
+	if (i == 0)
+	{
+		printf("가위\n");
+	}
+	else if (i == 1)
+	{
+		printf("바위\n");
+	}
+	else if (i == 2)
+	{
+		printf("보\n");
 	}
 	return 0;
 }
