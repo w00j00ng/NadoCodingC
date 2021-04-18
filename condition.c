@@ -64,5 +64,29 @@ int main(void)
 			printf("%d 번 학생은 조별 발표 준비를 하세요\n", i);
 		}
 	}
+
+	// && ||
+	int a, b, c, d;
+	a = 10; b = 10; c = 11; d = 11;
+
+	if (a == b && c == d)
+	{
+		printf("a와 b는 같고, c와 d도 같습니다\n");
+	}
+	else
+	{
+		printf("값이 서로 다르네요\n");
+	}
+
+	a = 10; b = 10; c = 12; d = 13;
+
+	if (a == b || c == d)
+	{
+		printf("a와 b 혹은, c와 d의 값이 같습니다\n");
+	}
+	else
+	{
+		printf("값이 서로 다르네요\n");
+	}
 	return 0;
 }
