@@ -7,6 +7,10 @@ int function_with_return();
 void function_without_params();
 void function_with_params(int num1, int num2, int num3);
 int apple(int total, int eaten);
+int add(int num1, int num2);
+int sub(int num1, int num2);
+int mul(int num1, int num2);
+int div(int num1, int num2);
 
 int main(void)
 {
@@ -38,21 +42,35 @@ int main(void)
 
 	// 함수 종류
 	// 반환값이 없는 함수
-	function_without_return();
+	//function_without_return();
 
 	// 반환값이 있는 함수
-	int ret = function_with_return();
-	p(ret);
+	//int ret = function_with_return();
+	//p(ret);
 
 	// 파라미터(전달값)이 없는 함수
-	function_without_params();
+	//function_without_params();
 
 	// 파라미터(전달값)이 있는 함수
-	function_with_params(31, 25, 45);
+	//function_with_params(31, 25, 45);
 
 	// 파라미터(전달값)도 받고, 반환값도 보내주는 함수
 	// 5개의 사과 중에서 2개를 먹었다.
-	printf("사과 %d개 중에 %d개를 먹으면? %d개가 남아요\n", 5, 2, apple(5, 2));
+	//printf("사과 %d개 중에 %d개를 먹으면? %d개가 남아요\n", 5, 2, apple(5, 2));
+
+	// 계산기 함수
+	int num = 2;
+	num = add(num, 3);
+	p(num);
+
+	num = sub(num, 1);
+	p(num);
+
+	num = mul(num, 3);
+	p(num);
+
+	num = div(num, 6);
+	p(num);
 
 	return 0;
 }
@@ -88,6 +106,26 @@ int apple(int total, int eaten)
 {
 	printf("전달값과 반환값이 있는 함수입니다.\n");
 	return total - eaten;
+}
+
+int add(int num1, int num2)
+{
+	return num1 + num2;
+}
+
+int sub(int num1, int num2)
+{
+	return num1 - num2;
+}
+
+int mul(int num1, int num2)
+{
+	return num1 * num2;
+}
+
+int div(int num1, int num2)
+{
+	return num1 / num2;
 }
 
 /*반환형 함수이름(전달값)
