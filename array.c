@@ -151,10 +151,36 @@ int main(void)
 	}
 
 	// 문자열 입력받기: 경찰서 조서 쓰기 예제
-	char name[256];
+	/*char name[256];
 	printf("이름이 뭐예요? ");
 	scanf_s("%s", name, sizeof(name));
-	printf("%s\n", name);
+	printf("%s\n", name);*/
+
+	// 참고: ASCII 코드란 ANSI(미국표준협회)에서 제시한 표준 코드 체계이다.
+	// 총 7 bit, 총 128개 코드 (0 ~ 127)
+	// 문자: 아스키코드 정수값
+	// 0: 48, A: 65, a: 97
+
+	printf("%c\n", 'a'); // a
+	printf("%d\n", 'a'); // 97
+
+	printf("%c\n", 'A'); // A
+	printf("%d\n", 'A'); // 65
+
+	printf("%c\n", '0'); // 0
+	printf("%d\n", '0'); // 48
+
+	printf("%c\n", ' '); // ' '
+	printf("%d\n", ' '); // 32
+
+	printf("%c\n", '\0'); // ' '
+	printf("%d\n", '\0'); // 0
+
+	printf("========================\n");
+	for (int i = 0; i < 128; i++)
+	{
+		printf("아스키코드 정수 %d: %c\n", i, i);
+	}
 
 	return 0;
 }
