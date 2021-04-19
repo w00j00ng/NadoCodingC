@@ -123,8 +123,8 @@ int main_array(void)
 	printf("%s\n", kor); // 나도코딩
 	printf("%d\n", sizeof(kor)); // 9
 
-	char kor1 = '나';
-	printf("%c\n", kor1); // ?
+	//char kor1 = '나';
+	//printf("%c\n", kor1); // ?
 
 	char c_array[7] = { 'c', 'o', 'd', 'i', 'n', 'g' };
 	printf("%s\n", c_array); // coding
