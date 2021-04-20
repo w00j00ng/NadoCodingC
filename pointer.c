@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+void swap(int a, int b);
+
 int main(void)
 {
 	//// 포인터
@@ -69,53 +71,68 @@ int main(void)
 	//printf("미션맨의 주소는 %d\n", &미션맨); // 미션맨의 주소는 7337852
 	//printf("스파이의 주소는 %d\n", &스파이); // 스파이의 주소는 7337840
 
-	// 배열은 포인터와 아주 가깝다
-	int arr[3] = { 5, 10, 15 };
-	int * ptr = arr;
-	for (int i = 0; i < 3; i++)
-	{
-		printf("배열 arr[%d]의 값: %d\n", i, arr[i]);
-	}
-	for (int i = 0; i < 3; i++)
-	{
-		printf("포인터 ptr[%d]의 값: %d\n", i, ptr[i]);
-		// arr[i]의 값과 ptr[i]의 값이 같다.
-		// 포인터의 값은 배열의 값을 그대로 가져온다.
-	}
+	//// 배열은 포인터와 아주 가깝다
+	//int arr[3] = { 5, 10, 15 };
+	//int * ptr = arr;
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	printf("배열 arr[%d]의 값: %d\n", i, arr[i]);
+	//}
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	printf("포인터 ptr[%d]의 값: %d\n", i, ptr[i]);
+	//	// arr[i]의 값과 ptr[i]의 값이 같다.
+	//	// 포인터의 값은 배열의 값을 그대로 가져온다.
+	//}
 
-	// 포인터의 값을 바꿔보자
-	ptr[0] = 100;
-	ptr[1] = 200;
-	ptr[2] = 300;
+	//// 포인터의 값을 바꿔보자
+	//ptr[0] = 100;
+	//ptr[1] = 200;
+	//ptr[2] = 300;
+	//
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	printf("배열 arr[%d]의 값: %d\n", i, arr[i]);
+	//	// 아래의 문장은 위 문장과 동일한 문법이다.
+	//	printf("배열 arr[%d]의 값: %d\n", i, *(arr + i));
+	//	// arr은 arr이 처음 시작되는 주소값을 가지고 있다
+	//	// *(arr + i)는 arr[i]의 값을 가져온다.
+	//}
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	printf("포인터 ptr[%d]의 값: %d\n", i, ptr[i]);
+	//	printf("포인터 ptr[%d]의 값: %d\n", i, *(ptr + 1));
+	//	// 배열의 값이 100, 200, 300으로 바뀐다.
+	//	// 포인터가 각각 배열 요소에 가서 값을 바꾸었다는 것을 알 수 있다.
+	//}
+	//// *(arr + i) == arr[i]
+	//// arr == arr 배열의 첫번째 값의 주소와 동일 == &arr[0]
+	//printf("arr 자체의 값: %d\n", arr); // arr 자체의 값: 5832016
+	//printf("arr[0]의 주소: %d\n", &arr[0]); // arr[0]의 주소: 5832016
+
+	//printf("arr 자체의 값이 가지는 주소의 실제 값: %d\n", *arr); // arr 자체의 값이 가지는 주소의 실제 값: 100
+	//// *arr은 *(arr + 0)과 같다
+	//printf("arr[0]의 실제 값: %d\n", *&arr[0]); // arr[0]의 실제 값: 100
+
+	//// *& 는 아무것도 없는 것과 같다. &은 주소이며 *는 그 주소의 값이기 때문에
+	//// *& 는 서로 상쇄된다.
+	//printf("arr[0]의 실제 값: %d\n", *&*&*&*&*&*&*&*&*&*&*&*&*&arr[0]); // arr[0]의 실제 값: 100
+	//printf("arr[0]의 실제 값: %d\n", arr[0]); // arr[0]의 실제 값: 100
 	
-	for (int i = 0; i < 3; i++)
-	{
-		printf("배열 arr[%d]의 값: %d\n", i, arr[i]);
-		// 아래의 문장은 위 문장과 동일한 문법이다.
-		printf("배열 arr[%d]의 값: %d\n", i, *(arr + i));
-		// arr은 arr이 처음 시작되는 주소값을 가지고 있다
-		// *(arr + i)는 arr[i]의 값을 가져온다.
-	}
-	for (int i = 0; i < 3; i++)
-	{
-		printf("포인터 ptr[%d]의 값: %d\n", i, ptr[i]);
-		printf("포인터 ptr[%d]의 값: %d\n", i, *(ptr + 1));
-		// 배열의 값이 100, 200, 300으로 바뀐다.
-		// 포인터가 각각 배열 요소에 가서 값을 바꾸었다는 것을 알 수 있다.
-	}
-	// *(arr + i) == arr[i]
-	// arr == arr 배열의 첫번째 값의 주소와 동일 == &arr[0]
-	printf("arr 자체의 값: %d\n", arr); // arr 자체의 값: 5832016
-	printf("arr[0]의 주소: %d\n", &arr[0]); // arr[0]의 주소: 5832016
-
-	printf("arr 자체의 값이 가지는 주소의 실제 값: %d\n", *arr); // arr 자체의 값이 가지는 주소의 실제 값: 100
-	// *arr은 *(arr + 0)과 같다
-	printf("arr[0]의 실제 값: %d\n", *&arr[0]); // arr[0]의 실제 값: 100
-
-	// *& 는 아무것도 없는 것과 같다. &은 주소이며 *는 그 주소의 값이기 때문에
-	// *& 는 서로 상쇄된다.
-	printf("arr[0]의 실제 값: %d\n", *&*&*&*&*&*&*&*&*&*&*&*&*&arr[0]); // arr[0]의 실제 값: 100
-	printf("arr[0]의 실제 값: %d\n", arr[0]); // arr[0]의 실제 값: 100
+	// SWAP
+	int a = 10;
+	int b = 20;
+	// a와 b의 값을 바꿔보자
+	printf("Swap 함수 전 => a : %d, b: %d\n", a, b); // Swap 함수 전 => a : 10, b: 20
+	swap(a, b);
+	printf("Swap 함수 후 => a : %d, b: %d\n", a, b); // Swap 함수 후 => a : 10, b: 20
 
 	return 0;
+}
+
+void swap(int a, int b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
 }
