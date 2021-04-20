@@ -124,7 +124,7 @@ int main(void)
 	int b = 20;
 	// a와 b의 값을 바꿔보자
 	printf("Swap 함수 전 => a : %d, b: %d\n", a, b); // Swap 함수 전 => a : 10, b: 20
-	swap(a, b);
+	swap(a, b);                                      // Swap 함수 안 => a : 20, b: 10
 	printf("Swap 함수 후 => a : %d, b: %d\n", a, b); // Swap 함수 후 => a : 10, b: 20
 
 	return 0;
@@ -135,4 +135,5 @@ void swap(int a, int b)
 	int temp = a;
 	a = b;
 	b = temp;
+	printf("Swap 함수 안 => a : %d, b: %d\n", a, b);
 }
