@@ -2,6 +2,7 @@
 
 void swap(int a, int b);
 void swap_addr(int *a, int *b);
+void changeArray(int* ptr);
 
 int main(void)
 {
@@ -121,21 +122,45 @@ int main(void)
 	//printf("arr[0]의 실제 값: %d\n", arr[0]); // arr[0]의 실제 값: 100
 	
 	// SWAP
-	int a = 10;
-	int b = 20;
-	printf("a의 주소: %d\n", &a); // a의 주소: 15727684
-	printf("b의 주소: %d\n", &b); // b의 주소: 15727672
-	// a와 b의 값을 바꿔보자
-	printf("Swap 함수 전 => a : %d, b: %d\n", a, b); // Swap 함수 전 => a : 10, b: 20
-	swap(a, b);                                      // Swap 함수 안 => a : 20, b: 10
-	printf("Swap 함수 후 => a : %d, b: %d\n", a, b); // Swap 함수 후 => a : 10, b: 20
+	//int a = 10;
+	//int b = 20;
+	//printf("a의 주소: %d\n", &a); // a의 주소: 15727684
+	//printf("b의 주소: %d\n", &b); // b의 주소: 15727672
+	//// a와 b의 값을 바꿔보자
+	//printf("Swap 함수 전 => a : %d, b: %d\n", a, b); // Swap 함수 전 => a : 10, b: 20
+	//swap(a, b);                                      // Swap 함수 안 => a : 20, b: 10
+	//printf("Swap 함수 후 => a : %d, b: %d\n", a, b); // Swap 함수 후 => a : 10, b: 20
 
-	// 값에 의한 복사 (Call by Value) -> 값만 복사한다는 의미
+	//// 값에 의한 복사 (Call by Value) -> 값만 복사한다는 의미
 
-	// 주소값을 넘기면? 메모리 공간에 있는 주소값 자체를 넘기면... 철수네처럼
-	printf("Swap_addr 함수 전 => a : %d, b: %d\n", a, b); // Swap_addr 함수 전 => a : 10, b: 20
-	swap_addr(&a, &b);                                    // (주소값 전달)Swap 함수 안 => a : 20, b: 10 
-	printf("Swap_addr 함수 후 => a : %d, b: %d\n", a, b); // Swap_addr 함수 후 => a : 20, b: 10
+	//// 주소값을 넘기면? 메모리 공간에 있는 주소값 자체를 넘기면... 철수네처럼
+	//printf("Swap_addr 함수 전 => a : %d, b: %d\n", a, b); // Swap_addr 함수 전 => a : 10, b: 20
+	//swap_addr(&a, &b);                                    // (주소값 전달)Swap 함수 안 => a : 20, b: 10 
+	//printf("Swap_addr 함수 후 => a : %d, b: %d\n", a, b); // Swap_addr 함수 후 => a : 20, b: 10
+	
+	// 배열일 때, arr2 자체가 주소
+	int arr2[3] = { 10, 20, 30 };
+	changeArray(arr2);
+	for (int i = 0; i < 3; i++)
+	{
+		printf("%d ", arr2[i]);
+		if (i == 2)
+		{
+			printf("\n"); // 10 20 50
+		}
+	}
+
+	// 아래의 코드 실행 시 위 코드와 같은 결과가 나온다
+	int arr3[3] = { 10, 20, 30 };
+	changeArray(&arr3[0]);
+	for (int i = 0; i < 3; i++)
+	{
+		printf("%d ", arr2[i]);
+		if (i == 2)
+		{
+			printf("\n"); // 10 20 50
+		}
+	}
 
 	return 0;
 }
@@ -156,4 +181,9 @@ void swap_addr(int *a, int *b)
 	*a = *b;
 	*b = temp;
 	printf("(주소값 전달)Swap 함수 안 => a : %d, b: %d\n", *a, *b);
+}
+
+void changeArray(int * ptr)
+{
+	ptr[2] = 50;
 }
