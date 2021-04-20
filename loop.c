@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main_loop(void)
+int main(void)
 {
 	//// ++ ¿¬»êÀÚ
 	//int a = 10;

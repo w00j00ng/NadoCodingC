@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main_array(void)
+int main(void)
 {
 	//// ¹è¿­
 	//int subway_array[3];

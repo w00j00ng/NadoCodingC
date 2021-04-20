@@ -1,6 +1,7 @@
 Debug/
 Release/
 .vs/
+a.exe
 
 # Prerequisites
 *.d
