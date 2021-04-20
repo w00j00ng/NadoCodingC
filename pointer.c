@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void swap(int a, int b);
+void swap_addr(int *a, int *b);
 
 int main(void)
 {
@@ -130,6 +131,9 @@ int main(void)
 	printf("Swap 함수 후 => a : %d, b: %d\n", a, b); // Swap 함수 후 => a : 10, b: 20
 
 	// 값에 의한 복사 (Call by Value) -> 값만 복사한다는 의미
+	printf("Swap_addr 함수 전 => a : %d, b: %d\n", a, b); // Swap_addr 함수 전 => a : 10, b: 20
+	swap_addr(&a, &b);                                    // (주소값 전달)Swap 함수 안 => a : 20, b: 10 
+	printf("Swap_addr 함수 후 => a : %d, b: %d\n", a, b); // Swap_addr 함수 후 => a : 20, b: 10
 
 	// 주소값을 넘기면? 메모리 공간에 있는 주소값 자체를 넘기면... 철수네처럼
 
@@ -144,4 +148,12 @@ void swap(int a, int b)
 	printf("Swap 함수 안 => a : %d, b: %d\n", a, b); // Swap 함수 안 => a : 20, b: 10
 	printf("Swap 함수 안 a의 주소: %d\n", &a);       // Swap 함수 안 a의 주소: 15727456 (새로운 공간에 만들어짐)
 	printf("Swap 함수 안 b의 주소: %d\n", &b);       // Swap 함수 안 b의 주소: 15727460 (새로운 공간에 만들어짐)
+}
+
+void swap_addr(int *a, int *b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+	printf("(주소값 전달)Swap 함수 안 => a : %d, b: %d\n", *a, *b);
 }
