@@ -105,7 +105,8 @@ void decreaseWater(long elapsedTime)
 {
 	for (int i = 0; i < 6; i++)
 	{
-		arrayFish[i] -= (level * 3 * (int)elapsedTime); // 3: 난이도 조절을 위한 값
+		// arrayFish[i] -= (level * 3 * (int)elapsedTime); // 3: 난이도 조절을 위한 값
+		arrayFish[i] -= (level * (int)elapsedTime); // 3: 난이도 조절을 위한 값
 		if (arrayFish[i] < 20)
 		{
 			arrayFish[i] = 0;
