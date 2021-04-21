@@ -12,6 +12,7 @@ void initData();
 int * cursor;
 void printfFishes();
 void decreaseWater(long elapsedTime);
+int checkFishAlive();
 
 int main(void)
 {
@@ -63,7 +64,6 @@ int main(void)
 			cursor[num - 1] += 1;
 		}
 		
-		// 레벨업을 할 건지 확인 (레벨업은 20초마다 한번 씩 수행)
 		if (totalElapsedTime / 20 > level - 1) 
 		{
 			// 레벨업 
@@ -77,6 +77,19 @@ int main(void)
 				exit(0);
 			}
 		}
+		// 모든 물고기가 죽었는지 확인
+		if (checkFishAlive() == 0) 
+		{
+			// 물고기 모두 죽음
+			printf("모든 물고기가 죽었습니다.");
+			exit(0);
+		}
+		else
+		{
+			// 최소한 한 마리 이상의 물고기는 살아있음 
+			printf("물고기가 아직 살아있어요\n");
+		}
+		prevElapsedTime = totalElapsedTime; 
 	} 
 	
 	return 0;
@@ -105,11 +118,22 @@ void decreaseWater(long elapsedTime)
 {
 	for (int i = 0; i < 6; i++)
 	{
-		// arrayFish[i] -= (level * 3 * (int)elapsedTime); // 3: 난이도 조절을 위한 값
-		arrayFish[i] -= (level * (int)elapsedTime); // 3: 난이도 조절을 위한 값
-		if (arrayFish[i] < 20)
+		arrayFish[i] -= (level * 3 * (int)elapsedTime); // 3: 난이도 조절을 위한 값
+		if (arrayFish[i] < 0)
 		{
 			arrayFish[i] = 0;
 		}
 	}
+}
+
+int checkFishAlive()
+{
+	for (int i = 0; i < 6; i++)
+	{
+		if (arrayFish[i] > 0)
+		{
+			return 1; // 참 True 
+		}
+	}
+	return 0; // 거짓 False 
 }
