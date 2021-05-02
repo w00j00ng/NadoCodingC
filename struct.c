@@ -5,6 +5,8 @@ struct GameInfo {
 	int year;
 	int price;
 	char * company;
+	
+	struct GameInfo * friendGame; // 연관 업체 게임
 };
 
 int main(void)
@@ -86,7 +88,12 @@ int main(void)
 	printf("   제작사    : %s\n", gamePtr->company);
 	
 	// 연관업체 게임 소개
-	
+	gameInfo1.friendGame = &gameInfo2;
+	printf("\n\n-- 연관업체의 게임 출시 정보 --\n");
+	printf("   게임명    : %s\n", gameInfo1.friendGame->name);
+	printf("   발매년도  : %d\n", gameInfo1.friendGame->year);
+	printf("   가격      : %d\n", gameInfo1.friendGame->price);
+	printf("   제작사    : %s\n", gameInfo1.friendGame->company);
 	
 	return 0;
 }
