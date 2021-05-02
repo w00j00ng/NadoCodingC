@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>
 
 // 비밀번호를 입력 받아서
 // 맞는 경우? 비밀 일기를 읽어와서 보여주고, 계속 작성하도록 합니다.
@@ -29,6 +30,7 @@ int main(void)
 		if (c == 13) // Enter: 비밀번호 입력 종료
 		{
 			password[i] = "\0";
+			break;
 		}
 		else // 비밀번호 입력 중
 		{
